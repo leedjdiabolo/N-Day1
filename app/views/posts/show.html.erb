@@ -1,0 +1,26 @@
+<p>
+	<strong>Title:</strong>
+	<%= @posts.title %>
+</p>
+<p>
+	<strong>Content:</strong>
+	<%= @posts.content %>
+</p>
+
+<table style="border: solid 1px black">
+	<tr>
+		<th>Content</th>
+		<th>Action</th>
+	</tr>
+	<% @comments.each do |e| %>
+		<tr>
+			<td><%= e.content %></td>
+			<td><%= link_to "Delete comment",comment_path(e,:pid => @posts.id,:uid => params[:uid]),:method => :delete %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to "New comment for this post",new_comment_path(:pid => @posts.id,:uid => params[:uid]) %> |
+<%= link_to "Back to user", user_path(params[:uid]) %> |
+<%= link_to "Back to index",users_path %>
+

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+	<table style="border: solid 1px black">
+		<tr>
+			<th>Title</th>
+			<th>Content</th>
+			<th>Action</th>
+		</tr>
+		<% @posts.each do |e| %>
+		<tr>
+			<td><%= e.title %></td>
+			<td><%= e.content %></td>
+			<td><%= link_to "Show Post", post_path(e.id,:uid => @user.id) %></td>
+			<td><%= link_to "Edit Post", edit_post_path(e.id,:uid => @user.id) %></td>
+			<td><%= link_to "Delete Post", post_path(e.id,:uid => @user.id), :method => :delete %></td>
+		</tr>
+		<% end %>
+	</table>
+</p>
+
+<%= link_to 'New Post', new_post_path({:uid => @user.id}) %> |
+<%= link_to 'Edit Post', edit_user_path(@user) %> |
+<%= link_to 'Back to index', users_path %>

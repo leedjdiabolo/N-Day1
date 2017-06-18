@@ -1,0 +1,9 @@
+<%= form_for @comments, :url => comments_path(:uid => params[:uid]) do |f| %>
+    <%= f.label :content, "Content" %>
+    <%= f.text_area :content %>
+
+    <%= f.hidden_field :post_id,:value => @bb %>
+
+    <br>
+    <%= f.submit "Create" %>
+<% end %>
