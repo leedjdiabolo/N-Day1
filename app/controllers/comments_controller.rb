@@ -12,6 +12,17 @@ class CommentsController < ApplicationController
 		redirect_to post_path(bb_params[:post_id],:uid => params[:uid])
 	end
 
+	def edit
+		@comments = Comment.find(params[:id])
+	end
+
+	def update
+		@comments =Comment.find(params[:id])
+		@comments.update(bb_params)
+
+		redirect_to post_path(params[:pid],:uid => params[:uid])
+	end
+
 	def destroy
 		@comments = Comment.find(params[:id])
 		@comments.destroy

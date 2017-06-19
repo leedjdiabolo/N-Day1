@@ -15,6 +15,7 @@
 	<% @comments.each do |e| %>
 		<tr>
 			<td><%= e.content %></td>
+			<td><%= link_to "Edit comment",edit_comment_path(e,:pid => @posts.id,:uid => params[:uid]) %></td>
 			<td><%= link_to "Delete comment",comment_path(e,:pid => @posts.id,:uid => params[:uid]),:method => :delete %></td>
 		</tr>
 	<% end %>
